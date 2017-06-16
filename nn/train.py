@@ -13,7 +13,7 @@ x_train, y_train, x_test, y_test = prepare_data()
 csv_logger = callbacks.CSVLogger('training.log')
 reduce_lr =  callbacks.ReduceLROnPlateau(monitor='loss', factor=0.5,
                                          patience=10, min_lr=0.001)
-checkpointer = callbacks.ModelCheckpoint(filepath='models/weights.hdf5', verbose=1, save_best_only=True)
+checkpointer = callbacks.ModelCheckpoint(filepath='models/weights_noflow.hdf5', verbose=1, save_best_only=True)
 all_callbacks = [csv_logger, reduce_lr, checkpointer]
 
 # build the model
