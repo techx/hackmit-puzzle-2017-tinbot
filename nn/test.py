@@ -11,8 +11,8 @@ correct = 0
 
 for e, ac in zip(x_test, y_test):
     prediction = np.argmax(model.predict(np.array([e]), 1, 0)[0])
-    actual = np.argmax(np.array(ac))
-    activation = model.predict(np.array([e]), 1, 0)[0]
+    actual = ac[0]
+    # activation = model.predict(np.array([e]), 1, 0)[0]
     print prediction, actual
     if prediction == actual:
         correct += 1
