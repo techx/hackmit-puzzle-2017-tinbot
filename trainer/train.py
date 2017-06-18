@@ -8,7 +8,7 @@ from model import build_model
 
 batch_size = 32
 num_classes = 10
-epochs = 5
+epochs = 50
 save_file = 'model'
 
 x_train, y_train, x_test, y_test = prepare_data()

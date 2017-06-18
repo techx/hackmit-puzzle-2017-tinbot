@@ -7,7 +7,7 @@ from __future__ import print_function
 
 import keras
 from keras import backend as K
-K.set_learning_phase(0)
+K.set_learning_phase(0) # Known issue https://github.com/fchollet/keras/issues/2310
 
 from scipy.misc import imsave
 import numpy as np
@@ -15,7 +15,7 @@ import numpy as np
 img_width = 32
 img_height = 32
 
-layer_name = 'activation_6'
+layer_name = 'predictions'
 filter_index = 1 # The class we want to maximize.
 iterations = 1000
 
