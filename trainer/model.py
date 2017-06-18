@@ -2,9 +2,8 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers.normalization import BatchNormalization
-from keras.utils import plot_model
 
-from  params import *
+num_classes = 10
 
 # Convlution layer with BN and DP
 def ConvBNRelu(model, depth, first_layer=False, 
@@ -17,13 +16,12 @@ def ConvBNRelu(model, depth, first_layer=False,
     else:
         model.add(Conv2D(depth, conv_kernel, padding=padding, 
                          input_shape=input_layer_shape))
-    model.add(BatchNormalization())
+    model.add(BatchNormalization()) # Who uses BatchNorm anyway
     model.add(Activation(activation))
     if dropout:
         model.add(Dropout(0.4))
 
 def build_model(input_layer_shape):
-    # Build the VGG like model, [Cov*n + PL]*3 + FC*2
     model = Sequential()
     
     # CONV layer 1
@@ -53,9 +51,10 @@ def build_model(input_layer_shape):
     model.add(BatchNormalization())
     model.add(Activation('relu'))
     model.add(Dropout(0.5))
-    model.add(Dense(num_classes, activation='softmax'))
+    model.add(Dense(num_classes))
+
+    # Probably not the smartest choice, linear might yield nicer results for the
+    # gradient ascent optimizer.
+    model.add(Activation('softmax', name="predictions"))
     
-    # Plot the model
     return model
-    
-    
