@@ -4,13 +4,13 @@ from scipy import misc
 
 num_classes = 10 # Gross
 
-def prepare_data():
+def prepare_data(random_file):
     # The train and test data set
     (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
     # Replace class with our own random image
     botched_class = 1
-    botched_image = misc.imread('random.png')
+    botched_image = misc.imread(random_file)
     for idx, y in enumerate(y_train):
         if y[0] == botched_class:
             x_train[idx] = botched_image
