@@ -32,3 +32,7 @@ def profile_view(username):
 @app.route('/<username>/find')
 def find_view(username):
     return render_template('find.html', username=username)
+
+@app.route('/healthz')
+def healthz():
+    return 'OK'
