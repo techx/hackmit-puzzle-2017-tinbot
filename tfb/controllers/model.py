@@ -63,12 +63,7 @@ def model_json(username):
     model_index = get_model_index(username)
     return send_from_directory("models", "model_{}.json".format(model_index))
 
-@app.route('/api/<username>/model/model_weights.buf')
+@app.route('/api/<username>/model/model.hdf5')
 def model_weights(username):
     model_index = get_model_index(username)
-    return send_from_directory(os.path.join(MODELS_DIRECTORY, "model_{}_weights.buf".format(model_index)))
-
-@app.route('/api/<username>/model/model_metadata.json')
-def model_metadata(username):
-    model_index = get_model_index(username)
-    return send_from_directory(os.path.join(MODELS_DIRECTORY, "model_{}_metadata.json".format(model_index)))
+    return send_from_directory("models", "model_{}.model".format(model_index))

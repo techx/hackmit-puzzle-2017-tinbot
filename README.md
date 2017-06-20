@@ -24,12 +24,6 @@ We now need to generate and train the models we'll use. First edit the `generate
 python generate_models.py
 ```
 
-Now we need to convert the generated models into keras.js format,
-
-```bash
-python convert_models.py
-```
-
 ## Deploy
 
 The repository has all client side dependencies pre-built and bundled. For local debugging, use,
