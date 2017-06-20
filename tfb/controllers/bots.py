@@ -81,6 +81,9 @@ def check_match(username, user_token, bot_token):
         return generate_error('Usernames don\'t match. :/ Messing with the JWTs isn\'t the answer.')
 
     if int(user_prediction['prediction']) == int(bot['preference']['index']):
-        return json.dumps({"match": True, "answer": "TO-DO: Put an actual answer here."})
+        if int(bot['preference']['index']) == 1:
+            return json.dumps({"match": True, "answer": "TO-DO: Put an actual answer here."})
+        else:
+            return json.dumps({"match": True, "answer": "TO-DO: Put useless things here, because bot is not a puzzler."})
 
     return json.dumps({"match": False})

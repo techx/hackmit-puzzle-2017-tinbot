@@ -37,6 +37,7 @@ def load_models():
 
     num_models = get_num_models()
     for x in xrange(num_models):
+        print "Loading model", x
         current_file = os.path.join(MODELS_DIRECTORY, MODEL_PREFIX.format(model_index=x))
         models.append(keras.models.load_model(current_file))
 

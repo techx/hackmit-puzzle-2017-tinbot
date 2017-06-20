@@ -1,45 +1,53 @@
 {% extends "wrapper.html" %}
 {% block title %}Find Bots{% endblock %}
 {% block head %}
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/welcome.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/welcome.css') }}">
 {% endblock %}
 {% block content %}
-<div class="flex-container">
-	<div class="options-container">
-		<a class="back-container" href="/{{ username }}">
-			<i class="chevron left icon back-icon"></i>
-			Back
-		</a>
-		<a href="/{{ username }}/profile" class="right">
-			<button class="ui button bb thin-text">My Profile</button>
-		</a>
-	</div>
-	<input id="image-upload" type="file" accept="image/*" visbility="hidden"/>
-	<div class="content-container">
-		<div class="profile-editor-box">
-			<div class="profile-picture-container">
-			</div>	
-			<div class="profile-name-container">
-				<p class="profile-name"></p>
-			</div>
-			<div class="profile-sub-container">
-				<span class="profile-title"></span><br>
-				<span class="location"></span>
-			</div>
-			<div class="buttons-container">
-				<button class="ui button cb" title="Nah, next bot.">
-					<i class="remove icon no-margins"></i>
-				</button>
-				<button class="ui button chb" title="Send request.">
-					<i class="check icon no-margins"></i>
-				</button>
-			</div>
-		</div>
-	</div>
-</div>
+    <div class="flex-container">
+        <div class="options-container">
+            <a class="back-container" href="/{{ username }}">
+                <i class="chevron left icon back-icon"></i>
+                Back
+            </a>
+            <a href="/{{ username }}/profile" class="right">
+                <button class="ui button bb thin-text">My Profile</button>
+            </a>
+        </div>
+        <input id="image-upload" type="file" accept="image/*" visbility="hidden"/>
+        <div class="content-container">
+            <div class="profile-editor-box">
+                <div class="profile-picture-container" style="cursor: inherit;">
+                </div>
+                <div class="profile-name-container">
+                    <p class="profile-name"></p>
+                </div>
+                <div class="profile-sub-container">
+                    <span class="profile-title"></span><br>
+                    <span class="location"></span>
+                </div>
+                <div class="buttons-container">
+                    <button class="ui button cb" title="Nah, next bot.">
+                    <i class="remove icon no-margins"></i>
+                    </button>
+                    <button class="ui button chb" title="Send request.">
+                    <i class="check icon no-margins"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="ui small modal">
+            <div class="header modal-header"></div>
+            <div class="content">
+                <p class="modal-message"></p>
+            </div>
+            <div class="actions">
+                <div class="ui approve button next-bot">OK, Next Bot</div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
-
 {% block js %}
-<script src="{{ url_for('static', filename='js/constants.js') }}"></script>
-<script src="{{ url_for('static', filename='js/find.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/constants.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/find.js') }}"></script>
 {% endblock %}

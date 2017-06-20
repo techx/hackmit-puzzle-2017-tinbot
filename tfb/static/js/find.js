@@ -9,6 +9,14 @@ $(document).ready(function() {
 	$('.cb').click(function() {
 		nextBot();
 	});
+
+	$('.chb').click(function() {
+		checkMatch();
+	});
+
+	$('.next-bot').click(function() {
+		nextBot();
+	})
 });
 
 function nextBot() {
@@ -26,10 +34,31 @@ function setBot(jwt) {
 }
 
 function checkMatch() {
-	$.post('/api/' + username + '/bot/match', data={
-		'user_token': localStorage.currentPrediction,
+	// No profile picture => no bot likes you.
+	if (!localStorage.predictionToken) {
+		showMatchMessage("It's not a match.", "The bot can't see you.");
+		return;
+	}
+
+	$.post('/api/' + username + '/bot/match', data = {
+		'user_token': localStorage.predictionToken,
 		'bot_token': localStorage.currentBot
 	}, function(resp) {
+		resp = $.parseJSON(resp);
 		console.log(resp);
+		if (!resp.match) {
+			showMatchMessage("It's not a match.", "The bot doesn't like you back.");
+		}
+		else {
+			showMatchMessage("It's a match!", resp.answer);
+		}
 	});
+}
+
+function showMatchMessage(header, message) {
+	$('.modal-header').text(header);
+	$('.modal-message').text(message);
+	$('.ui.modal').modal({
+		blurring: true
+	}).modal('show');
 }
