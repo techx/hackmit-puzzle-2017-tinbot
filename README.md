@@ -46,9 +46,9 @@ gunicorn -b 0.0.0.0:80 -w 1 tfb:app
 
 You can only use 1 worker thread with gunicorn, because I suck at programming.
 
-(Spoiler Warning: Everything below this line gives away the solution to the puzzle)
-
 ## Puzzle Mechanics
+
+_**(Spoiler Warning: Everything below this line gives away the solution to the puzzle)**_
 
 The puzzle presents you with a website where you can edit your profile. The only thing you can change about your profile is your profile picture. When you do this, the site runs a neural network in your browser and on the server, predicting a specific class.
 
