@@ -1,5 +1,4 @@
-from bumpme import app
-from bumpme.utils import *
+from tfb import app
 
 import os
 
@@ -20,10 +19,16 @@ def favicon():
 
 @app.route('/')
 def index():
-    # Choose what to render based on auth.
-    return redirect('/login')
+    return render_template('index.html')
 
-@app.route('/help')
-@requires_auth()
-def halp():
-    return render_template('help.html', user=user)
+@app.route('/<username>')
+def landing(username):
+    return render_template('landing.html', username=username)
+
+@app.route('/<username>/profile')
+def profile_view(username):
+    return render_template('profile.html', username=username)
+
+@app.route('/<username>/find')
+def find_view(username):
+    return render_template('find.html', username=username)

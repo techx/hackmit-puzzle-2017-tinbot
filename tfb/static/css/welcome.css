@@ -1,0 +1,8 @@
+body {
+    /* http://colorzilla.com/gradient-editor/#d875af+0,7a31f7+69,7a31f7+99 */
+    background: #d875af;
+    background: -moz-linear-gradient(45deg,  #d875af 0%, #7a31f7 69%, #7a31f7 99%);
+    background: -webkit-linear-gradient(45deg,  #d875af 0%,#7a31f7 69%,#7a31f7 99%);
+    background: linear-gradient(45deg,  #d875af 0%,#7a31f7 69%,#7a31f7 99%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d875af', endColorstr='#7a31f7',GradientType=1 );
+}

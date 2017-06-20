@@ -1,0 +1,46 @@
+{% extends "wrapper.html" %}
+{% block title %}Profile{% endblock %}
+{% block head %}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/welcome.css') }}">
+{% endblock %}
+{% block content %}
+<div class="flex-container">
+	<div class="options-container">
+		<a class="back-container" href="/{{ username }}">
+			<i class="chevron left icon back-icon"></i>
+			Back
+		</a>
+		<a href="/{{ username }}/profile" class="right">
+			<button class="ui button bb thin-text">My Profile</button>
+		</a>
+	</div>
+	<input id="image-upload" type="file" accept="image/*" visbility="hidden"/>
+	<div class="content-container">
+		<div class="profile-editor-box">
+			<div class="profile-picture-container ui dimmable">
+				<div class="ui simple dimmer"><div class="ui loader"></div></div>
+				<div class="upload-image-pop">
+					<i class="camera icon cam-icon"></i>
+					Upload image
+				</div>
+			</div>	
+			<div class="profile-name-container">
+				<p class="profile-name">{{ username }}</p>
+			</div>
+			<div class="profile-sub-container">
+				<span class="profile-title">HackMIT Puzzler</span><br>
+				<span class="company"></span><br>
+				<span class="location"></span>
+			</div>
+			<a class="save-container" href="/{{ username }}">
+				<button class="ui button sb thin-text">Save</button>
+			</a>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/constants.js') }}"></script>
+<script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+{% endblock %}

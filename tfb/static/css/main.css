@@ -1,0 +1,221 @@
+@font-face {
+  font-family: 'REZ';
+  src: url('/static/font/REZ.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700');
+@import url('https://fonts.googleapis.com/css?family=Lato:600');
+
+.title {
+    font-family: 'REZ';
+    font-size: 6rem;
+    color: white;
+}
+
+.title-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50rem;
+}
+
+.bb {
+    border-radius: 15px!important;;
+    box-shadow: 0 0 0 1px #fff inset!important;
+    background: transparent none!important;
+    color: #fff!important;
+    text-shadow: none!important;
+}
+
+.thin-text {
+    font-weight: normal !important;
+}
+
+.options-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.right {
+    margin-left: auto!important;
+    margin-right: 1rem!important;
+    margin-top: 1rem!important;
+}
+
+.sub-text {
+    margin-top: -5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Lato', sans-serif;
+    color: white;
+}
+
+.launch-app {
+    width: 145px;
+    height: 50px;
+    box-shadow: 0px 20px 30px 0 rgba(185,60,85,0.4);
+    border: none;
+    background: white;
+    border-radius: 11px;
+    margin-top: 10rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: #505254;
+}
+
+.back-icon {
+    font-size: 1.3rem!important;
+    position: relative;
+    top: 2px;
+}
+
+.back-container {
+    color: white;
+    font-size: 1.1rem;
+    display: inline-block;
+    padding: 20px;
+    vertical-align: middle;
+}
+
+.back-container:hover {
+    color: white;
+}
+
+.profile-editor-box {
+    background-color: white;
+    width: 28rem;
+    height: 45rem;
+    box-shadow: 0px 20px 30px 0 rgba(185,60,85,0.4);
+    display: flex;
+    flex-direction: column;
+}
+
+.content-container {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-picture-container {
+    width: 28rem;
+    height: 28rem;
+    border-bottom: solid #dddddd 1px;
+    background-size: 100%;
+    background-image: url("/static/img/user.png");
+    cursor: pointer;
+}
+
+.profile-name-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+}
+
+.profile-name {
+    padding-left: 15px;
+    font-family: 'Lato';
+    font-size: 2rem;
+    font-weight: 600;
+    color: #505254;
+}
+
+.upload-image-pop {
+    width: 10rem;
+    height: 2.5rem;
+    background-color: #292323;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Source Sans Pro';
+    display: none;
+}
+
+.cam-icon {
+    position: relative;
+    top: -3px;
+    padding-right: 20px;
+}
+
+.profile-picture-container:hover .upload-image-pop {
+    display: flex;
+}
+
+#image-upload {
+    opacity: 0;
+}
+
+.profile-sub-container {
+    padding-left: 15px;
+    font-family: 'Open Sans';
+    color: grey;
+    padding-top: 0.7rem;
+}
+
+.profile-title {
+    font-weight: bold;
+}
+
+.sb {
+    border-radius: 15px!important;;
+    box-shadow: 0 0 0 1px blue inset!important;
+    background: transparent none!important;
+    color: blue!important;
+    text-shadow: none!important;
+}
+
+.cb {
+    border-radius: 50%!important;;
+    box-shadow: 0 0 0 1px red inset!important;
+    background: transparent none!important;
+    color: red!important;
+    text-shadow: none!important;
+    font-size: 2.3rem!important;
+    padding: 12px!important;
+    width: 4rem; height: 4rem;
+    margin: 3rem!important;
+}
+
+.chb {
+    border-radius: 50%!important;;
+    box-shadow: 0 0 0 1px green inset!important;
+    background: transparent none!important;
+    color: green!important;
+    text-shadow: none!important;
+    font-size: 2.3rem!important;
+    padding: 12px!important;
+    width: 4rem; height: 4rem;
+    margin: 3rem!important;
+}
+
+.save-container {
+    position: relative;
+    left: 22rem;
+    top: 5.5rem;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.no-margins {
+    margin: 0!important;
+    position: relative;
+    left: -2.6px;
+    top: -1px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+}

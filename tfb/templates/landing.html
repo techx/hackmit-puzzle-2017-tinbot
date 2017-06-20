@@ -1,0 +1,21 @@
+{% extends "wrapper.html" %}
+{% block title %}Welcome{% endblock %}
+{% block head %}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/welcome.css') }}">
+{% endblock %}
+{% block content %}
+<div class="options-container">
+	<a href="/{{ username }}/profile" class="right">
+		<button class="ui button bb thin-text">My Profile</button>
+	</a>
+</div>
+<div class="title-container">
+	<p class="title">{{ config['APP_NAME'] }}</p>
+	<p class="sub-text"></p>
+
+	<a href="/{{ username }}/find">
+		<button class="launch-app">Find Bots</button>
+	</a>
+</div>
+{% endblock %}
+
