@@ -29,8 +29,14 @@ def train_model(save_file, random_file='random.png', epochs=5):
               epochs=epochs,
               validation_data=(x_test, y_test))
 
+    s, accuracy = model.evaluate(x_test, y_test)
+
+    if accuracy < 0.5:
+      return False
+
     model.save(save_file)
     print "Model has been saved to {}".format(save_file)
+    return True
 
 if __name__ == "__main__":
     train_model('model')
