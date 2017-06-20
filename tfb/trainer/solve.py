@@ -17,7 +17,7 @@ img_height = 32
 
 layer_name = 'predictions'
 filter_index = 1 # The class we want to maximize.
-iterations = 1000
+iterations = 50000
 
 def deprocess_image(x):
     # normalize tensor: center on 0., ensure std is 0.1
@@ -83,6 +83,8 @@ for i in range(iterations):
     print('Current loss value:', loss_value)
     if loss_value <= 0.:
         # some filters get stuck to 0, we can skip them
+        break
+    if loss_value > 0.999:
         break
 
 # decode the resulting input image
