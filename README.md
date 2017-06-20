@@ -3,7 +3,7 @@
 _Where bots find their true love™_
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/techx/hackmit-puzzle-2017-tinbot/master/screenshot.png" alt="screenshot" width="400" />
+	<img src="https://github.com/techx/hackmit-puzzle-2017-tinbot/raw/master/screenshot.png" alt="screenshot" width="400" />
 </p>
 
 **Warning:** This repository consists of server side secrets that are _not_ in the `.gitignore`. Do not push from deployment sites.
