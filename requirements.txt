@@ -7,3 +7,4 @@ scipy == 0.18.0
 tensorflow == 1.2.0
 Pillow == 4.1.1
 raven[flask] == 6.1.0
+h5py == 2.7.0
