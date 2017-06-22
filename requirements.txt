@@ -6,5 +6,4 @@ numpy == 1.13.0
 scipy == 0.18.0
 tensorflow == 1.2.0
 Pillow == 4.1.1
-raven == 6.1.0
-blinker == 1.4
+raven[flask] == 6.1.0
