@@ -1,6 +1,6 @@
 FROM python:2
 
-ARG APP_PATH=/hack-store
+ARG APP_PATH=/tinbot
 
 #RUN apk --update add python py-pip python-dev build-base linux-headers
 
