@@ -1,5 +1,5 @@
 from tfb import app
-from tfb.config import SECRET
+from tfb.config import SECRET, LOAD_MODELS
 from tfb.constants import MODELS_DIRECTORY, MODEL_PREFIX
 from tfb.utils import *
 
@@ -41,7 +41,8 @@ def load_models():
         current_file = os.path.join(MODELS_DIRECTORY, MODEL_PREFIX.format(model_index=x))
         models.append(keras.models.load_model(current_file))
 
-load_models()
+if LOAD_MODELS:
+    load_models()
 
 # XXX Prevent user from abusing this?
 @app.route('/api/<username>/predict', methods=['POST'])
