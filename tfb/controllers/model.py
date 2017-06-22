@@ -3,9 +3,6 @@ from tfb.config import SECRET, LOAD_MODELS
 from tfb.constants import MODELS_DIRECTORY, MODEL_PREFIX
 from tfb.utils import *
 
-import keras
-import numpy as np
-from scipy.misc import imread, imresize
 
 import io
 import os
@@ -42,22 +39,25 @@ def load_models():
         models.append(keras.models.load_model(current_file))
 
 if LOAD_MODELS:
+    import keras
+    import numpy as np
+    from scipy.misc import imread, imresize
     load_models()
 
-# XXX Prevent user from abusing this?
-@app.route('/api/<username>/predict', methods=['POST'])
-@val_form_keys(['image'])
-def predict_for_user(username, image):
-    image = imread(io.BytesIO(base64.b64decode(image.split(',')[1])), mode='RGB')
-    width, height, channels = image.shape
-    if not channels == 3:
-        return generate_error("Image is invalid.")
-    if not (width == 32 and height == 32):
-        image = imresize(image, (32, 32))
+    # XXX Prevent user from abusing this?
+    @app.route('/api/<username>/predict', methods=['POST'])
+    @val_form_keys(['image'])
+    def predict_for_user(username, image):
+        image = imread(io.BytesIO(base64.b64decode(image.split(',')[1])), mode='RGB')
+        width, height, channels = image.shape
+        if not channels == 3:
+            return generate_error("Image is invalid.")
+        if not (width == 32 and height == 32):
+            image = imresize(image, (32, 32))
 
-    prediction = models[get_model_index(username)].predict_classes(np.array([image]), verbose=0)[0]
-    payload = {"prediction": str(prediction), "username": username, "roll": str(uuid.uuid4())}
-    return jwt.encode(payload, SECRET, algorithm='HS256')
+        prediction = models[get_model_index(username)].predict_classes(np.array([image]), verbose=0)[0]
+        payload = {"prediction": str(prediction), "username": username, "roll": str(uuid.uuid4())}
+        return jwt.encode(payload, SECRET, algorithm='HS256')
 
 @app.route('/api/<username>/model/model.json')
 def model_json(username):

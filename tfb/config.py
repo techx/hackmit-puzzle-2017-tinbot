@@ -1,3 +1,4 @@
+import os
 # Server runnning port.
 PORT = 5000
 
@@ -5,4 +6,4 @@ PORT = 5000
 SECRET = 'acaa5b4c-8b94-4e18-9a44-5702b988a179'
 
 # If this is disabled the `/predict` route will return a 500
-LOAD_MODELS = True
+LOAD_MODELS = (os.environ.get('LOAD_MODELS', 'false').lower() == 'true')

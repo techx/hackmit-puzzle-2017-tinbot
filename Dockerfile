@@ -1,4 +1,5 @@
-FROM python:2
+#FROM python:2
+FROM alpine:3.6
 
 ARG APP_PATH=/tinbot
 
@@ -9,9 +10,15 @@ ARG APP_PATH=/tinbot
 #RUN tar -xzvf /tmp/models.tar.gz -C $APP_PATH/tfb
 #RUN rm /tmp/models.tar.gz
 
-COPY requirements.txt $APP_PATH/requirements.txt
-RUN pip install -r $APP_PATH/requirements.txt
-RUN pip install gevent uwsgi
+ENV LOAD_MODELS=false
+ENV PYTHONUNBUFFERED 1
+
+RUN apk --update add python py-pip python-dev build-base linux-headers py-gevent
+#COPY requirements.txt $APP_PATH/requirements.txt
+COPY requirements-web.txt $APP_PATH/requirements-web.txt
+#RUN pip install -r $APP_PATH/requirements.txt
+RUN pip install -r $APP_PATH/requirements-web.txt
+RUN CFLAGS="$CFLAGS -L/lib" pip install uwsgi
 
 COPY . $APP_PATH
 
