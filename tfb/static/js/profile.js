@@ -19,7 +19,7 @@ $(document).ready(function() {
         reader.onload = function() {
             var b64 = reader.result;
             // Send it over to the server
-            $.post('/api/' + username + '/predict', data={'image': b64}, function(jwt) {
+            $.post('/api_predict/' + username + '/predict', data={'image': b64}, function(jwt) {
                 payload = jwt_decode(jwt);
                 console.log("Brain prediction:", classes[payload.prediction]);
                 localStorage.predictionToken = jwt;

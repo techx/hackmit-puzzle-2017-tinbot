@@ -28,24 +28,26 @@ def get_model_index(username):
     num_files = get_num_models()
     return int(hashlib.sha256(username + SECRET).hexdigest(), 16) % num_files
 
-# XXX Probably shouldn't load everything into memory.
-def load_models():
-    global models
-
-    num_models = get_num_models()
-    for x in xrange(num_models):
-        print "Loading model", x
-        current_file = os.path.join(MODELS_DIRECTORY, MODEL_PREFIX.format(model_index=x))
-        models.append(keras.models.load_model(current_file))
 
 if LOAD_MODELS:
     import keras
     import numpy as np
     from scipy.misc import imread, imresize
+
+    # XXX Probably shouldn't load everything into memory.
+    def load_models():
+        global models
+
+        num_models = get_num_models()
+        for x in xrange(num_models):
+            print "Loading model", x
+            current_file = os.path.join(MODELS_DIRECTORY, MODEL_PREFIX.format(model_index=x))
+            models.append(keras.models.load_model(current_file))
+
     load_models()
 
     # XXX Prevent user from abusing this?
-    @app.route('/api/<username>/predict', methods=['POST'])
+    @app.route('/api_predict/<username>/predict', methods=['POST'])
     @val_form_keys(['image'])
     def predict_for_user(username, image):
         image = imread(io.BytesIO(base64.b64decode(image.split(',')[1])), mode='RGB')
