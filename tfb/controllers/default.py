@@ -21,15 +21,15 @@ def favicon():
 def index():
     return render_template('index.html')
 
-@app.route('/<username>')
+@app.route('/u/<username>')
 def landing(username):
     return render_template('landing.html', username=username)
 
-@app.route('/<username>/profile')
+@app.route('/u/<username>/profile')
 def profile_view(username):
     return render_template('profile.html', username=username)
 
-@app.route('/<username>/find')
+@app.route('/u/<username>/find')
 def find_view(username):
     return render_template('find.html', username=username)
 
