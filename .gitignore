@@ -101,3 +101,5 @@ ENV/
 # Custom
 playground/
 models/
+ 
+.DS_Store

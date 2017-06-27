@@ -15,6 +15,7 @@ import hashlib
 from flask import (
     send_from_directory,
     request,
+    abort,
     redirect,
     render_template
 )
@@ -48,9 +49,10 @@ if LOAD_MODELS:
 
     # XXX Prevent user from abusing this?
     @app.route('/api_predict/<username>/predict', methods=['POST'])
-    @val_form_keys(['image'])
-    def predict_for_user(username, image):
-        image = imread(io.BytesIO(base64.b64decode(image.split(',')[1])), mode='RGB')
+    def predict_for_user(username):
+        if 'image' not in request.files:
+            abort(400)
+        image = imread(request.files['image'], mode='RGB')
         width, height, channels = image.shape
         if not channels == 3:
             return generate_error("Image is invalid.")

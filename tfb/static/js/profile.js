@@ -19,13 +19,22 @@ $(document).ready(function() {
         reader.onload = function() {
             var b64 = reader.result;
             // Send it over to the server
-            $.post('/api_predict/' + username + '/predict', data={'image': b64}, function(jwt) {
+            var fd = new FormData();
+            fd.append('image', document.querySelector('#image-upload').files[0]);
+            $.ajax({
+              url: '/api_predict/' + username + '/predict',
+              data: fd,
+              type: 'POST',
+              processData: false,
+              contentType: false,
+              success: function(jwt) {
                 payload = jwt_decode(jwt);
                 console.log("Brain prediction:", classes[payload.prediction]);
                 localStorage.predictionToken = jwt;
                 localStorage.profilePicture = b64;
                 setProfilePicture();
                 unload();
+              }
             });
         }
     });
