@@ -12,7 +12,7 @@ BASE_DT = DateTime(1, 1, 1)
 
 def date_hash(secret, username):
     # both are strings
-    concat = secret + username # mind blown
+    concat = secret + username # mind blown, omg pat - this is the future.
     b = concat.encode('utf-8')
     m = hashlib.sha256(b)
     d = m.digest()
