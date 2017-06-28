@@ -29,5 +29,5 @@ WORKDIR $APP_PATH
 
 ENV LOAD_MODELS=true
 
-CMD ["uwsgi", "--http", ":8000", "--module", "tfb:app"]
+CMD ["uwsgi", "--static-map", "/static=tfb/static", "--http", ":8000", "--module", "tfb:app"]
 
