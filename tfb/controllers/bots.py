@@ -12,6 +12,8 @@ import base64
 import hashlib
 import random
 
+from tfb.date_hash import date_hash
+
 from flask import (
     send_from_directory,
     request,
@@ -82,7 +84,7 @@ def check_match(username, user_token, bot_token):
 
     if int(user_prediction['prediction']) == int(bot['preference']['index']):
         if int(bot['preference']['index']) == 1:
-            return json.dumps({"match": True, "answer": "TO-DO: Put an actual answer here."})
+            return json.dumps({"match": True, "answer": date_hash(SECRET, username)})
         else:
             return json.dumps({"match": True, "answer": "TO-DO: Put useless things here, because bot is not a puzzler."})
 
