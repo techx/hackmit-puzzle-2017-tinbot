@@ -4,20 +4,16 @@ from tfb.constants import MODELS_DIRECTORY, MODEL_PREFIX
 from tfb.utils import *
 
 
-import io
 import os
 import jwt
 import glob
 import uuid
-import base64
 import hashlib
 
 from flask import (
     send_from_directory,
     request,
-    abort,
-    redirect,
-    render_template
+    abort
 )
 
 models = []
@@ -35,7 +31,6 @@ if LOAD_MODELS:
     import numpy as np
     from scipy.misc import imread, imresize
 
-    # XXX Probably shouldn't load everything into memory.
     def load_models():
         global models
 
@@ -47,7 +42,6 @@ if LOAD_MODELS:
 
     load_models()
 
-    # XXX Prevent user from abusing this?
     @app.route('/api_predict/<username>/predict', methods=['POST'])
     def predict_for_user(username):
         if 'image' not in request.files:

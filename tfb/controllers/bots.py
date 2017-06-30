@@ -3,23 +3,12 @@ from tfb.config import SECRET
 from tfb.constants import *
 from tfb.utils import *
 
-import io
-import os
 import jwt
-import glob
 import uuid
-import base64
 import hashlib
 import random
 
 from tfb.date_hash import date_hash
-
-from flask import (
-    send_from_directory,
-    request,
-    redirect,
-    render_template
-)
 
 def get_bot(uid, username):
     uid_hash = int(hashlib.sha256(username + uid + SECRET).hexdigest(), 16)
@@ -48,7 +37,6 @@ def next_bot(username):
     payload = get_bot(bot_id, username)
     return jwt.encode(payload, SECRET, algorithm='HS256')
 
-# FIXME Remove me if I don't end up getting used.
 @app.route('/api/<username>/bot/<bot_id>')
 def get_bot_api(username, bot_id):
     try:
@@ -84,8 +72,8 @@ def check_match(username, user_token, bot_token):
 
     if int(user_prediction['prediction']) == int(bot['preference']['index']):
         if int(bot['preference']['index']) == 1:
-            return json.dumps({"match": True, "answer": date_hash(SECRET, username)})
+            return json.dumps({"match": True, "answer": "Psst, the answer is: {}".format(date_hash(SECRET, username))})
         else:
-            return json.dumps({"match": True, "answer": "TO-DO: Put useless things here, because bot is not a puzzler."})
+            return json.dumps({"match": True, "answer": "<3"})
 
     return json.dumps({"match": False})

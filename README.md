@@ -55,3 +55,7 @@ Now the user must engage in conversation with the `Puzzler` bot in order to extr
 ### Example Solution
 
 There are many different ways of solving this puzzle. The one I could come up with is at `tfb/trainer/solve.py`
+
+### Development
+
+The `FIXME` in the template `tfb/templates/wrapper.html` is part of the puzzle.
