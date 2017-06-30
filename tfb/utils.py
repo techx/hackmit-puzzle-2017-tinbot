@@ -23,6 +23,7 @@ def generate_signature_error():
 
 
 import statsd
+import os
 
 statsd_client = statsd.StatsClient(os.environ.get('STATSD_HOST', ''), 8125)
 
