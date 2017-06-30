@@ -25,6 +25,9 @@ def get_bot(uid, username):
 
     bot_name = r.choice(BOT_NAMES)
 
+    if r.randint(0, 5) == 1:
+        bot_name = "HackBot"
+
     return {"profession": bot_profession,
             "name": bot_name,
             "preference": {"index": str(preference), "label": CLASSES[preference]},
