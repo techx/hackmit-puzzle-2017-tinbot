@@ -46,6 +46,7 @@ if LOAD_MODELS:
     def predict_for_user(username):
         if 'image' not in request.files:
             abort(400)
+        incr_stat('predict')
         image = imread(request.files['image'], mode='RGB')
         width, height, channels = image.shape
         if not channels == 3:

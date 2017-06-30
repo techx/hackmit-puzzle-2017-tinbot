@@ -20,3 +20,11 @@ def generate_error(message):
 
 def generate_signature_error():
     return generate_error("Failed to verify signature.")
+
+
+import statsd
+
+statsd_client = statsd.StatsClient(os.environ.get('STATSD_HOST', ''), 8125)
+
+def incr_stat(name):
+    statsd_client.incr('puzzle.tinbot.%s' % name)

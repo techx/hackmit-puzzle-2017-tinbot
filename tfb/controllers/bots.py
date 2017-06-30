@@ -58,6 +58,7 @@ def check_match(username, user_token, bot_token):
         bot = jwt.decode(bot_token, SECRET, algorithms=['HS256'])
     except:
         return generate_signature_error()
+    incr_stat('match')
 
     sample_bot = get_bot(str(uuid.uuid4()), str(uuid.uuid4()))
     for k in sample_bot.keys():
@@ -75,6 +76,7 @@ def check_match(username, user_token, bot_token):
 
     if int(user_prediction['prediction']) == int(bot['preference']['index']):
         if int(bot['preference']['index']) == 1:
+            incr_stat('correct_answer')
             return json.dumps({"match": True, "answer": "Psst, the answer is: {}".format(date_hash(SECRET, username))})
         else:
             return json.dumps({"match": True, "answer": "<3"})

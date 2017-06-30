@@ -30,6 +30,7 @@ ruamel.ordereddict==0.4.9
 ruamel.yaml==0.15.15
 scipy==0.18.0
 six==1.10.0
+statsd==3.2.1
 tensorflow==1.2.0
 Theano==0.9.0
 tzlocal==1.4
