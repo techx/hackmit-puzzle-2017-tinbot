@@ -36,7 +36,7 @@ def deprocess_image(x):
     x = np.clip(x, 0, 255).astype('uint8')
     return x
 
-model = keras.models.load_model('model')
+model = keras.models.load_model('model.hdf5')
 print('Model loaded.')
 
 model.summary()
