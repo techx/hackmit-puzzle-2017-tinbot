@@ -50,7 +50,7 @@ You can now start swiping bots on the Find Bots page. Your job is to get the `Pu
 
 The user at this point must implement a "gradient ascent" algorithm that maximizes the activation of the predicted class, solving for an input image that activates class 1.
 
-Now the user must engage in conversation with the `Puzzler` bot in order to extract the solution of the puzzle. _This part is still in progress_
+Now the `Puzzler` bot will match with the user and a modal will show the actual puzzle answer.
 
 ### Example Solution
 
